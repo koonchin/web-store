@@ -1,5 +1,6 @@
 import datetime
 import json
+import smtplib
 import mysql.connector
 import requests
 
@@ -223,5 +224,3 @@ class Web():
 db = DB()
 web = Web("7KRzYzjPqknzzSM2nVcooo3sWNF6EK4Oyq9QtGI8uyk=",
           "RA9VD1AjwaHo8UW0uNk924SnxN0xIFIGdlelDEcTEE=", "Muslin.info@gmail.com")
-
-web.get_shared_link('SO-202302438')

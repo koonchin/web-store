@@ -230,7 +230,7 @@ class CheckoutView(View):
                 payment_option = form.cleaned_data.get('payment_option')
 
                 if payment_option == 'S':
-                    return redirect('core:payment', payment_option='Qrcode')
+                    return redirect('core:payment', payment_option='QR code')
                 elif payment_option == 'P':
                     return redirect('core:payment', payment_option='COD')
                 else:
@@ -254,7 +254,7 @@ def create_order(req, payment_option, filename=""):
     amount = [i.quantity for i in order.items.all()]
 
     # dict for payment option : shipping channel
-    shipping_channel = {'COD': "EMS (COD)", 'Qrcode': "EMS"}
+    shipping_channel = {'COD': "EMS (COD)", 'QR code': "EMS"}
 
     # prepare product list to put in dict form
     data_list = []
@@ -277,7 +277,7 @@ def create_order(req, payment_option, filename=""):
         'shippingphone': address.telephone,
         'shippingaddress': address.street_address,
         'shippingchannel': shipping_channel[payment_option],
-        'isCOD': True,
+        'isCOD': payment_option == 'COD',
         "orderdate": f"{datetime.date.today()}",
         "amount": order.get_total(),
         "discount": 0,
@@ -577,18 +577,18 @@ def add_to_cart(request, slug):
             order_item.quantity += 1
             order_item.save()
             messages.info(request, "This item quantity was updated.")
-            return redirect("core:order-summary")
+            return redirect("core:product", slug)
         else:
             order.items.add(order_item)
             messages.info(request, "This item was added to your cart.")
-            return redirect("core:order-summary")
+            return redirect("core:product", slug)
     else:
         ordered_date = timezone.now()
         order = Order.objects.create(
             user=request.user, ordered_date=ordered_date)
         order.items.add(order_item)
         messages.info(request, "This item was added to your cart.")
-        return redirect("core:order-summary")
+        return redirect("core:product", slug)
 
 
 def add_to_cart_summary(request, slug, sku):

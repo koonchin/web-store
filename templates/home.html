@@ -1,13 +1,11 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %} {% block content %}{% load static %}
 <main>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <link href="{% static 'css/home.css' %}" rel="stylesheet">
     <style>
-        .card-img-top {
-            width: 100%;
-            height: 40vh;
-            object-fit: contain;
-        }
+
     </style>
-    <div class="container">
+    <div class="container no-margin-100width">
 
         <!--Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark mdb-color lighten-3 mt-3 mb-5">
@@ -54,49 +52,101 @@
 
         <!--Section: Products v.3-->
         <section class="text-center mb-4">
-
-            <div class="row wow fadeIn">
-
+          <div class="row">
+          <div class="col">
+            <div class="swiper mySwiper1">
+              <div class="swiper-wrapper" style="height:30rem">
                 {% for item in object_list %}
-                <div class="col-lg-3 col-md-6 mb-4">
-
-                    <div class="card">
-
-                        <div class="view overlay">
-                            <img src="{{ item.image.url }}" class="card-img-top">
-                            <a href="{{ item.get_absolute_url }}">
-                                <div class="mask rgba-white-slight"></div>
-                            </a>
-                        </div>
-                        <div class="card-body text-center">
-                            <a href="" class="grey-text">
-                                <h5>{{ item.get_category_display }}</h5>
-                            </a>
-                            <h5>
-                                <strong>
-                    <a href="{{ item.get_absolute_url }}" class="dark-grey-text">{{ item.title }}
-                      <span class="badge badge-pill {{ item.get_label_display }}-color">ขายดี</span>
-                    </a>
-                  </strong>
-                            </h5>
-
-                            <h4 class="font-weight-bold blue-text">
-                                <strong>฿
-                  {% if item.discount_price %}
-                  {{ item.discount_price }}
-                  {% else %}
-                  {{ item.price }}
-                  {% endif %}
-                  </strong>
-                            </h4>
-
-                        </div>
-
-                    </div>
-
+                <div class="swiper-slide img-hover-zoom">
+                  <img src="{{ item.image.url }}" >
                 </div>
                 {% endfor %}
+              </div>
+              <div class="swiper-button-next1 swiper-button-next"></div>
+              <div class="swiper-button-prev1 swiper-button-prev"></div>
+              <div class="swiper-pagination1"></div>
             </div>
+          </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <div class="banner">
+                  <div class="container">
+                    <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                      <div class="home_slider_title">A new Online Shop experience.</div>
+                      <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra
+                        velit venenatis fermentum luctus.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="banner">
+                  <div class="container">
+                    <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                      <div class="home_slider_title">A new Online Shop experience.</div>
+                      <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra
+                        velit venenatis fermentum luctus.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm">
+                <div class="banner">
+                  <div class="container">
+                    <div class="home_slider_content"  data-animation-in="fadeIn" data-animation-out="animate-out fadeOut">
+                      <div class="home_slider_title">A new Online Shop experience.</div>
+                      <div class="home_slider_subtitle">Lorem ipsum dolor sit amet, consectetur
+                        adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra
+                        velit venenatis fermentum luctus.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section-spacing wide-container">
+            <div class="content transparent align-center reading-width">
+                <h2 class="feature-header align-center cc-fade-in-up cc-animate-init feature-header--visible -in cc-animate-complete" data-cc-animate="cc-fade-in-up" data-cc-animate-delay="0.2s" style="">
+                  Vana Sleepwear
+                </h2>
+                <div class="rte inherit-colors align-center cc-fade-in-up cc-animate-init -in cc-animate-complete" data-cc-animate="cc-fade-in-up" data-cc-animate-delay="0.3s" style="">
+                  <p>Vana represents to a girl with cheerful life and full of joy. We use rabbit as a symbol of happiness and enjoyment. All of these moments are shared through our pajamas. Let's have a great moment together here!</p>
+                </div>
+            </div>
+          </div>
+          <div class="section-heading cc-animate-init -in cc-animate-complete" data-cc-animate="" style="margin-top:5em">
+      
+            <h2 class="h2">
+              <a data-cc-animate-click="" href="/collections/signature-collection">
+                Best Seller
+              </a>
+            </h2>
+          
+    
+          
+            <a data-cc-animate-click="" class="view-all-link" href="/collections/signature-collection">
+              View all
+            </a>
+          
+          </div>
+          
+            <div #swiperRef="" class="swiper mySwiper">
+                <div class="swiper-wrapper">
+                    {% for item in object_list %}
+                  <div class="swiper-slide">
+                    <a href="{{ item.get_absolute_url }}">
+                      <img src="{{ item.image.url }}" class="card-img-top" style="max-height:35rem;">
+                      </a>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+              </div>
 
         </section>
         <!--Section: Products v.3-->
@@ -138,13 +188,54 @@
 
     </div>
 
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      centeredSlides: true,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        type: "fraction",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+  </script>
+  <script>
+    var swiper1 = new Swiper(".mySwiper1", {
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
+      speed: 1700,
+      pagination: {
+        el: ".swiper-pagination1",
+      },
+      navigation: {
+        nextEl: ".swiper-button-next1",
+        prevEl: ".swiper-button-prev1",
+      },
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      }, 
+
+      keyboard: true,
+    });
+  </script>
     <script>
         function redirect_collection(text) {
             document.getElementById('filter').value += text;
             document.getElementById('my_form').submit();
         }
     </script>
-
 </main>
 
 {% endblock content %}

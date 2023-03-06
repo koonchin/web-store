@@ -1,0 +1,86 @@
+.container {
+    max-width: initial;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 40vh;
+    object-fit: contain;
+}
+
+html,
+body {
+    position: relative;
+    height: 100%;
+}
+
+body {
+    background: #eee;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.swiper {
+    width: auto;
+    height: max-content;
+    margin: 20px auto;
+}
+
+.append-buttons {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.append-buttons button {
+    display: inline-block;
+    cursor: pointer;
+    border: 1px solid #007aff;
+    color: #007aff;
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin: 0 10px;
+    font-size: 13px;
+}
+
+.banner {
+    position: relative;
+    height: 10rem;
+    margin-bottom: 5rem;
+    width: 100%;
+    background-image: url(https://lovelynight.co.th/wp-content/uploads/2021/09/mathilde-langevin-M_MXnQzxqs-unsplash.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.banner .container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    text-align: left;
+    transform: translateY(-50%);
+}
